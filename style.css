@@ -4,12 +4,14 @@
     box-sizing: border-box;
 }
 
-/*Colors*/
+/*var*/
 :root{
     --text-color: white;
     --primary-dark--color: #064975;
     --primary-color: #217DA5;
     --primary-light-color: #93C0D1;
+    --add-img: url(assets/add-img.png);
+    --add-img-hover: url(assets/add-img-hover.png);
 }
 
 /*general settings*/
@@ -50,13 +52,13 @@ body{
     display: flex;
     flex-direction: row;
     padding: 30px;
-    height: 218px;
     border-bottom: 1px solid var(--primary-color);
 }
 
 #intro-text{
     flex: 1;
     font-size: 18.487px;
+    justify-content: center;
 }
 
 #intro p{
@@ -82,12 +84,12 @@ body{
 
 /*films*/
 
-#films p{
+#films{
     padding-top: 2%;
     text-align: center;
 }
 
-#films p strong{
+#films h1{
     font-size: 52.727px;
     font-weight: 700px;
 }
@@ -104,13 +106,40 @@ body{
 #films ul li{
     width: 203px;
     height: 290px;
-    background: var(--primary-color);
+    background: var(--primary-color) var(--add-img) no-repeat center;
+    background-size: 38px 38px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.2s;
 }
 
-#films ul li img{
-    width: 38px;
-    height: 38px;
+#films ul li:hover{
+    background: var(--primary-color) var(--add-img-hover) no-repeat center;
+    background-size: 38px 38px;
+    border: 1px solid yellow;
+}
+
+@media (max-width: 700px){
+
+    #intro-text{
+        font-size: 12px;
+    }
+
+    #intro-text p{
+        font-size: 60px;
+    }
+
+    #intro-img img{
+        height: 90px;
+        width: 90px;
+    }
+
+    #films h1{
+        font-size: 30px;
+    }
+
+    #films ul{
+        flex-direction: column;
+    }
 }
