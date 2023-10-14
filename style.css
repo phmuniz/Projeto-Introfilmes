@@ -12,6 +12,10 @@
     --primary-light-color: #93C0D1;
     --add-img: url(assets/add-img.png);
     --add-img-hover: url(assets/add-img-hover.png);
+    --static1: url(assets/static1.png);
+    --static2: url(assets/static2.png);
+    --static3: url(assets/static3.png);
+    --static4: url(assets/static4.png);
 }
 
 /*general settings*/
@@ -120,6 +124,52 @@ body{
     border: 1px solid yellow;
 }
 
+/*static films*/
+.static{
+    width: 100%;
+    height: 100%;
+}
+
+/*add films*/
+.desc{
+    display: none;
+    border-top: 20px solid yellow;
+    height: 185px;
+}
+
+.add-img{
+    flex: 40%;
+    background: var(--primary-light-color) url(assets/add-capa.png) no-repeat left center;
+    background-size: 18%;
+    cursor: pointer;
+}
+
+input{
+    display: none;
+}
+
+.add-desc{
+    flex: 60%;
+    background: var(--primary-color);
+}
+
+.picture__image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 22.753px;
+    font-style: italic;
+    font-weight: 700;
+    width: 100%;
+    height: 100%;
+}
+
+.picture__img {
+    width: 100%;
+    height: 100%;
+}
+
 @media (max-width: 700px){
 
     #intro-text{
@@ -139,7 +189,8 @@ body{
         font-size: 30px;
     }
 
-    #films ul{
-        flex-direction: column;
+    #films ul li{
+        width: 150px;
+        height: 240px;
     }
 }
