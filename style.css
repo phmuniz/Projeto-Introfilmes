@@ -116,6 +116,7 @@ body{
     align-items: center;
     justify-content: center;
     transition: 0.2s;
+    overflow: hidden;
 }
 
 #films ul li:hover{
@@ -125,10 +126,10 @@ body{
 }
 
 /*static films*/
-.static{
+/*.static{
     width: 100%;
     height: 100%;
-}
+}*/
 
 /*add films*/
 .desc{
@@ -142,6 +143,7 @@ body{
     background: var(--primary-light-color) url(assets/add-capa.png) no-repeat left center;
     background-size: 18%;
     cursor: pointer;
+    overflow: hidden;
 }
 
 input{
@@ -161,8 +163,8 @@ input{
     font-size: 22.753px;
     font-style: italic;
     font-weight: 700;
-    width: 100%;
-    height: 100%;
+    /*width: 100%;
+    height: 100%;*/
 }
 
 .picture__img {
