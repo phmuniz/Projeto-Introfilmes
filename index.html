@@ -1,141 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+    <head>
 
-    <!--Add fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Roboto&display=swap" rel="stylesheet">
+        <!--Add fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Roboto&display=swap" rel="stylesheet">
 
-    <!--meta-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IntroFilmes</title>
+        <!--meta-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IntroFilmes</title>
 
-    <!--Add css-->
-    <link rel="stylesheet" href="style.css">
+        <!--Add css-->
+        <link rel="stylesheet" href="style.css">
 
-</head>
-<body>
+    </head>
 
-    <div id="head">
-        <img src="assets/logo_introcomp_1.png" alt="">
-    </div>
+    <body>
 
-    <div id="container">
-    
-        <div id="intro">
-
-            <div id="intro-text">
-                <p>INTRO<strong>FILMES</strong></p>
-                Uma plataforma de filmes e séries para praticar conceitos de html, css e javascript.
-            </div>
-            
-            <div id="intro-img">
-                <img src="assets/img-intro.png" alt="">
-            </div>
-            
+        <div id="head">
+            <img src="assets/logo_introcomp_1.png" alt="">
         </div>
-    
-        <div id="films">
-            <h1>CATÁLAGO</h1>
-    
-            <ul>
-                <li id="film1" onclick="toggleDesc('desc-film1')">
-                    <img class="static" src="assets/static1.png" alt="">
-                </li>
 
-                <li id="film2" onclick="toggleDesc('desc-film2')">
-                    <img class="static" src="assets/static2.jpg" alt="">
-                </li>
+        <div id="container">
+        
+            <div id="intro">
 
-                <li id="film3" onclick="toggleDesc('desc-film3')">
-                    <img class="static" src="assets/static3.png" alt="">
-                </li>
-
-                <li id="film4" onclick="toggleDesc('desc-film4')">
-                    <img class="static" src="assets/static4.png" alt="">
-                </li>
-
-                <li id="film5" onclick="toggleDesc('desc-film5')"></li>
-            </ul>
-
-            <div class="desc" id="desc-film1">
-                <div class="add-img">
-                    <img class="static" src="assets/static1.png" alt="">
+                <div id="intro-text">
+                    <p>INTRO<strong>FILMES</strong></p>
+                    Uma plataforma de filmes e séries para praticar conceitos de html, css e javascript.
                 </div>
-
-                <div class="add-desc" id="add-desc-film1">
-
+                
+                <div id="intro-img">
+                    <img src="assets/img-intro.png" alt="">
                 </div>
+                
             </div>
-            
-            <div class="desc" id="desc-film2">
-                <div class="add-img">
-                    <img class="static" src="assets/static2.jpg" alt="">
-                </div>
+        
+            <div id="catalog">
+                <h1>CATÁLAGO</h1>
+        
+                <div id="row1" class="row"></div>
 
-                <div class="add-desc" id="add-desc-film1">
+                <div class="desc" id="desc-film4">
 
-                </div>
-            </div>
-            
-            <div class="desc" id="desc-film3">
-                <div class="add-img" id="add-img-film3">
-                    <img class="static" src="assets/static3.png" alt="">
-                </div>
-
-                <div class="add-desc" id="add-desc-film1">
-
-                </div>
-            </div>
-            
-            <div class="desc" id="desc-film4">
-                <div class="add-img" id="add-img-film4">
-                    <img class="static" src="assets/static4.png" alt="">
-                </div>
-
-                <div class="add-desc" id="add-desc-film1">
-
-                </div>
-            </div>
-            
-            <div class="desc" id="desc-film5">
-
-                <label class="add-img">
-
-                    <input type="file" accept="image/*" class="picture__input">
-
-                    <span class="picture__image"></span>
-
-                    <script src="add_img.js"></script>
-
-                </label>
-
-                <div class="add-desc">
-
-                </div>
-            </div>
+                    <label class="add-img">
     
-            <ul>
-                <li id="film6"></li>
-                <li id="film7"></li>
-                <li id="film8"></li>
-                <li id="film9"></li>
-                <li id="film10"></li>
-            </ul>
+                        <input type="file" accept="image/*" class="picture__input">
     
-            <ul>
-                <li id="film11"></li>
-                <li id="film12"></li>
-                <li id="film13"></li>
-                <li id="film14"></li>
-                <li id="film15"></li>
-            </ul>
+                        <span class="picture__image"></span>
     
+                    </label>
+    
+                    <div class="add-desc">
+    
+                    </div>
+                </div>
+
+                <div class="desc" id="desc-film5">
+
+                    <label class="add-img">
+    
+                        <input type="file" accept="image/*" class="picture__input">
+    
+                        <span class="picture__image"></span>
+    
+                    </label>
+    
+                    <div class="add-desc">
+    
+                    </div>
+                </div>
+
+                <div id="row2" class="row"></div>
+                
+                <div id="row3" class="row"></div>
+        
+            </div>
+
         </div>
 
         <script src="script.js"></script>
-    
-</body>
+        
+    </body>
 </html>

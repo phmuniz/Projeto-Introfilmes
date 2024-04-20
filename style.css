@@ -88,17 +88,17 @@ body{
 
 /*films*/
 
-#films{
+#catalog{
     padding-top: 2%;
     text-align: center;
 }
 
-#films h1{
+#catalog h1{
     font-size: 52.727px;
     font-weight: 700px;
 }
 
-#films ul{
+.row{
     list-style: none;
     display: flex;
     width: max-content;
@@ -107,7 +107,7 @@ body{
     padding: 30px;
 }
 
-#films ul li{
+.film{
     width: 203px;
     height: 290px;
     background: var(--primary-color) var(--add-img) no-repeat center;
@@ -119,7 +119,7 @@ body{
     overflow: hidden;
 }
 
-#films ul li:hover{
+.film:hover{
     background: var(--primary-color) var(--add-img-hover) no-repeat center;
     background-size: 38px 38px;
     border: 1px solid yellow;
