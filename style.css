@@ -98,8 +98,7 @@ body{
     font-weight: 700px;
 }
 
-.row{
-    list-style: none;
+.films-row{
     display: flex;
     width: max-content;
     margin: auto;
@@ -144,32 +143,58 @@ body{
     background-size: 18%;
     cursor: pointer;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-input{
-    display: none;
+.picture_text{
+    color: var(--primary-color);
+    font-size: 22.753px;
+    font-style: italic;
+    font-weight: 700;
 }
+
+.picture__img {
+    width: 100%;
+    height: 100%;
+}
+
+/*input{
+    display: none;
+}*/
 
 .add-desc{
     flex: 60%;
     background: var(--primary-color);
 }
 
-.picture__image{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-color);
-    font-size: 22.753px;
-    font-style: italic;
-    font-weight: 700;
-    /*width: 100%;
-    height: 100%;*/
+.desc-up{
+    position: absolute;
 }
 
-.picture__img {
-    width: 100%;
-    height: 100%;
+.desc-text::placeholder{
+    color: var(--primary-light-color);
+    font-style: italic;
+}
+
+.desc-text{
+    width: 280px;
+    color: white;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    left: 0;
+    margin: 20px 0 0 20px;
+    font-weight: 700;
+}
+
+#input-title{
+    font-size: 45px;
+}
+
+#input-year{
+    font-size: 15px;
 }
 
 @media (max-width: 700px){

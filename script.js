@@ -1,66 +1,59 @@
-const reiLeao = {nome: 'Rei Leão',
-                imgSrc: './assets/static1.jpg',
-                sinopse: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias vitae voluptas ab sapiente adipisci pariatur nulla ipsum dolor voluptatum, tempore deserunt ducimus itaque architecto, animi natus incidunt harum repellendus reiciendis! Impedit nam quisquam tenetur deserunt veniam, qui, ipsam explicabo assumenda ut voluptatum cum sed earum et sit quis provident sunt voluptas quos? Pariatur explicabo quo repudiandae reiciendis, provident quae est. Debitis, ab odio, quasi ex temporibus molestias maxime officia error, officiis eveniet nam perspiciatis numquam deserunt dignissimos vel repellat necessitatibus quis sapiente.',
-                avaliacao: 4,
-                lancamento: 1994
-};
-
-const enrolados = {nome: 'Enrolados',
-                imgSrc: './assets/static2.png',
-                sinopse: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias vitae voluptas ab sapiente adipisci pariatur nulla ipsum dolor voluptatum, tempore deserunt ducimus itaque architecto, animi natus incidunt harum repellendus reiciendis! Impedit nam quisquam tenetur deserunt veniam, qui, ipsam explicabo assumenda ut voluptatum cum sed earum et sit quis provident sunt voluptas quos? Pariatur explicabo quo repudiandae reiciendis, provident quae est. Debitis, ab odio, quasi ex temporibus molestias maxime officia error, officiis eveniet nam perspiciatis numquam deserunt dignissimos excepturi doloribus sit vel repellat necessitatibus quis sapiente. Ta diferente (so pra deixar claro)',
-                avaliacao: 5,
-                lancamento: 2014
-};
-
-const toyStory = {nome: 'Toy Story',
-                imgSrc: './assets/static3.png',
-                sinopse: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias vitae voluptas ab sapiente adipisci pariatur nulla ipsum dolor voluptatum, tempore deserunt ducimus itaque architecto, animi natus incidunt harum repellendus reiciendis! Impedit nam quisquam tenetur deserunt veniam, qui, ipsam explicabo assumenda ut voluptatum cum sed earum et sit quis provident sunt voluptas quos? Pariatur explicabo quo repudiandae reiciendis, provident quae est. Debitis, ab odio, quasi ex temporibus molestias maxime officia error, officiis eveniet nam perspiciatis numquam deserunt dignissimos excepturi doloribus sit vel repellat necessitatibus quis sapiente. Essa aqui definitivamente ta diferente :D',
-                avaliacao: 5,
-                lancamento: 2004
-};
-
-var films = Array();
-
-films[0] = [reiLeao, enrolados, toyStory];
-films[1] = [];
-films[2] = [];
-
 var i = 0;
-var j = 3;
+var j = 0;
 
 while(i < 3){
 
     while(j < 5){
+
+        //Adding film space
         console.log('row' + (i+1));
-        films[i][j] = {
-            nome: '',
-            imgSrc: '',
-            sinopse: '',
-            avaliacao: '',
-            lancamento: ''
-        }
-        j += 1;
-    }
-
-    i += 1;
-    j = 0;
-}
-
-i = 0;
-j = 0;
-
-while(i < 3){
-
-    while(j < 5){
-        console.log('row' + (i+1));
-        var row = document.getElementById('row' + (i+1));
+        var row_films = document.getElementById('films-row' + (i+1));
         var film = document.createElement('div');
         film.classList = 'film';
-        var id = 'film' + ((i*5) + (j+1));
-        console.log(id);
-        film.id = id;
-        film.setAttribute('onclick', 'toggleDesc("desc-' + id + '")');
-        row.appendChild(film);
+        var id_film = 'film' + ((i*5) + (j+1));
+        console.log(id_film);
+        film.id = id_film;
+        film.setAttribute('onclick', 'toggleDesc("desc-' + id_film + '")');
+        row_films.appendChild(film);
+
+        //Adding description space
+        var row_desc = document.getElementById('desc-row' + (i+1));
+        var desc = document.createElement('div');
+        desc.classList = 'desc';
+        var id_desc = 'desc-' + id_film;
+        console.log(id_desc);
+        desc.id = id_desc;
+        row_desc.appendChild(desc);
+
+        var add_img = document.createElement('div');
+        add_img.classList = 'add-img';
+        var span = document.createElement('span');
+        span.classList = 'picture_text'
+        span.innerHTML = 'Insira uma capa';
+        add_img.appendChild(span);
+        desc.appendChild(add_img);
+
+        var add_desc = document.createElement('div');
+        add_desc.classList = 'add-desc';
+        var desc_up = document.createElement('div');
+        desc_up.classList = 'desc-up';
+        var input_title = document.createElement('input');
+        input_title.type = 'text';
+        input_title.placeholder = 'Insira o nome';
+        input_title.classList = 'desc-text';
+        input_title.id = 'input-title';
+        var input_year = document.createElement('input');
+        input_year.type = 'text';
+        input_year.placeholder = 'Insira o ano de criação';
+        input_year.classList = 'desc-text';
+        input_year.id = 'input-year';
+        var desc_down = document.createElement('div');
+        add_desc.appendChild(desc_up);
+        desc_up.appendChild(input_title);
+        desc_up.appendChild(input_year);
+        add_desc.appendChild(desc_down);
+        desc.appendChild(add_desc);
+    
         j += 1;
     }
 
