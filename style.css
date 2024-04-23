@@ -179,7 +179,6 @@ body{
 }
 
 .desc-text{
-    width: 280px;
     color: white;
     border: none;
     background-color: transparent;
@@ -190,10 +189,12 @@ body{
 }
 
 #input-title{
+    width: 280px;
     font-size: 45px;
 }
 
 #input-year{
+    width: 280px;
     font-size: 15px;
 }
 

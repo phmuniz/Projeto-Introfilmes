@@ -1,5 +1,25 @@
+var row1_films = document.getElementById('films-row1');
+var row1_desc = document.getElementById('desc-row1');
+
+//Creating static 1
+var static1 = document.createElement('div');
+static1.classList = 'film';
+var id_film = 'film1';
+static1.id = id_film;
+static1.setAttribute('onclick', 'toggleDesc("desc-' + id_film + '")');
+row1_films.appendChild(static1);
+var image_static1 = document.createElement('img');
+image_static1.src = 'assets/static1.jpg';
+static1.appendChild(image_static1);
+
+var desc1 = document.createElement('div');
+desc1.classList = 'desc';
+var id_desc1 = 'desc-film1';
+desc1.id = id_desc1;
+row1_desc.appendChild(desc1);
+
 var i = 0;
-var j = 0;
+var j = 1;
 
 while(i < 3){
 
@@ -63,8 +83,10 @@ while(i < 3){
 
 function toggleDesc(el) {
     var display = document.getElementById(el).style.display;
-    if(display == "none")
+    if(display == 'none' || display == ''){
         document.getElementById(el).style.display = 'flex';
-    else
+    }
+    else{
         document.getElementById(el).style.display = 'none';
+    }
 }
