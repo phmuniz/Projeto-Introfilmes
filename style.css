@@ -173,6 +173,7 @@ body{
     flex: 50%;
     text-align: left;
     padding: 10px 0 5px 20px;
+    gap: 10px;
 }
 
 .desc-down{
@@ -180,7 +181,6 @@ body{
     flex: 50%;
     text-align: left;
     padding-left: 20px;
-    gap: 10px;
     position: relative;
 }
 
