@@ -148,6 +148,7 @@ function input_construct(n_row){
     var add_img = document.createElement('label');
     add_img.id = 'add-img';
     add_img.classList = 'add-img';
+    add_img.setAttribute('for', 'input-img');
     var span = document.createElement('span');
     span.classList = 'picture_text'
     span.innerHTML = 'Insira uma capa';
@@ -158,7 +159,7 @@ function input_construct(n_row){
     input_img.style.display = 'none';
     input_img.setAttribute('onchange', 'add_img()');
     add_img.appendChild(span);
-    add_img.appendChild(input_img);
+    desc.appendChild(input_img);
     desc.appendChild(add_img);
 
     var add_desc = document.createElement('div');
