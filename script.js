@@ -93,9 +93,7 @@ function film_construct(film_data, n_row){
     add_img.classList = 'add-img';
     var img_cover = document.createElement('img');
     img_cover.src = film_data['imgSrc'];
-    img_cover.style.width = '100%';
-    img_cover.style.height = '100%';
-    img_cover.style.objectFit = 'cover';
+    img_cover.classList = 'picture__img';
     add_img.appendChild(img_cover);
     desc.appendChild(add_img);
 
@@ -147,12 +145,20 @@ function input_construct(n_row){
     desc.id = id_desc;
     row_desc.appendChild(desc);
 
-    var add_img = document.createElement('div');
+    var add_img = document.createElement('label');
+    add_img.id = 'add-img';
     add_img.classList = 'add-img';
     var span = document.createElement('span');
     span.classList = 'picture_text'
     span.innerHTML = 'Insira uma capa';
+    var input_img = document.createElement('input');
+    input_img.type = 'file';
+    input_img.accept = 'image/*';
+    input_img.id = 'input-img';
+    input_img.style.display = 'none';
+    input_img.setAttribute('onchange', 'add_img()');
     add_img.appendChild(span);
+    add_img.appendChild(input_img);
     desc.appendChild(add_img);
 
     var add_desc = document.createElement('div');
@@ -195,8 +201,67 @@ function input_construct(n_row){
     desc.appendChild(add_desc);
 }
 
+function add_img(){
+
+    var add_img = document.getElementById('add-img');
+    const inputTarget = document.getElementById('input-img');
+    const file = inputTarget.files[0];
+
+    if (file) {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function (e) {
+        const readerTarget = e.target;
+
+        var img = document.createElement("img");
+        img.id = 'input-img-cover';
+        img.src = readerTarget.result;
+        img.classList.add("picture__img");
+        add_img.innerHTML = '';
+        add_img.appendChild(img);
+    });
+
+    reader.readAsDataURL(file);
+  }
+}
+
+function input_destroy(){
+
+    var input_film = document.getElementById('film-input');
+    input_film.parentElement.removeChild(input_film);
+    var input_desc = document.getElementById('desc-input');
+    input_desc.parentElement.removeChild(input_desc);
+}
+
 function input_save(){
     
+    var input_img = document.getElementById('input-img-cover').src;
+    var input_title = document.getElementById('input-title').value;
+    var input_year = document.getElementById('input-year').value;
+    var input_text = document.getElementById('input-text').value;
+
+    var n_row = Math.floor(films.length / max_films_row);
+
+    var film = {
+        name: input_title,
+        imgSrc: input_img,
+        description: input_text,
+        rating: 4,
+        year: input_year
+    };
+
+    console.log(film);
+
+    input_destroy();
+
+    film_construct(film, n_row);
+
+    if((films.length % max_films_row) === 0){
+        n_row++;
+        row_construct(n_row);
+    }
+
+    input_construct(n_row);
 }
 
 function toggleDesc(el){
