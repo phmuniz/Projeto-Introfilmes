@@ -77,7 +77,7 @@ function film_construct(film_data, n_row){
 
     var img = document.createElement('img');
     img.src = film_data['imgSrc'];
-    img.style.width = '100%';
+    img.classList = 'picture__img';
     film.appendChild(img);
     row_films.appendChild(film);
 
@@ -173,11 +173,13 @@ function input_construct(n_row){
     input_title.placeholder = 'Insira o nome';
     input_title.classList = 'desc-title';
     input_title.id = 'input-title';
+    input_title.maxLength = '15';
     var input_year = document.createElement('input');
     input_year.type = 'text';
     input_year.placeholder = 'Insira o ano de criação';
     input_year.classList = 'desc-year';
     input_year.id = 'input-year';
+    input_year.maxLength = '4';
 
     var desc_down = document.createElement('div');
     desc_down.classList = 'desc-down';
@@ -187,6 +189,7 @@ function input_construct(n_row){
     input_text.placeholder = 'Insira uma breve sinopse';
     input_text.classList = 'desc-text';
     input_text.id = 'input-text';
+    input_text.maxLength = '380';
     var save = document.createElement('button');
     save.type = 'button';
     save.classList = 'save-button';
@@ -209,21 +212,21 @@ function add_img(){
     const file = inputTarget.files[0];
 
     if (file) {
-    const reader = new FileReader();
+        const reader = new FileReader();
 
-    reader.addEventListener("load", function (e) {
-        const readerTarget = e.target;
+        reader.addEventListener("load", function (e) {
+            const readerTarget = e.target;
 
-        var img = document.createElement("img");
-        img.id = 'input-img-cover';
-        img.src = readerTarget.result;
-        img.classList.add("picture__img");
-        add_img.innerHTML = '';
-        add_img.appendChild(img);
-    });
+            var img = document.createElement("img");
+            img.id = 'input-img-cover';
+            img.src = readerTarget.result;
+            img.classList.add("picture__img");
+            add_img.innerHTML = '';
+            add_img.appendChild(img);
+        });
 
-    reader.readAsDataURL(file);
-  }
+        reader.readAsDataURL(file);
+    }
 }
 
 function input_destroy(){
@@ -236,10 +239,18 @@ function input_destroy(){
 
 function input_save(){
     
-    var input_img = document.getElementById('input-img-cover').src;
+    if(document.getElementById('input-img-cover') != null){
+        var input_img = document.getElementById('input-img-cover').src;
+    }
     var input_title = document.getElementById('input-title').value;
     var input_year = document.getElementById('input-year').value;
     var input_text = document.getElementById('input-text').value;
+
+    if(input_img == undefined || input_title.length == 0 || input_year.length == 0 || input_text.length == 0){
+
+        alert('Preencha todos os dados para adicionar o filme corretamente');
+        return null;
+    }
 
     var n_row = Math.floor(films.length / max_films_row);
 
