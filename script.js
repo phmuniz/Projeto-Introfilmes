@@ -1,41 +1,63 @@
 const max_films_row = 5;
 
 const film1 = {name: 'O REI LEÃO',
-                imgSrc: './assets/static1.jpg',
-                description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias vitae voluptas ab sapiente adipisci pariatur nulla ipsum dolor voluptatum, tempore deserunt ducimus itaque architecto, animi natus incidunt harum repellendus reiciendis! Impedit nam quisquam tenetur deserunt veniam, qui, ipsam explicabo assumenda ut voluptatum cum sed earum et sit quis provident sunt voluptas quos?',
+                imgSrc: './assets/static1.jpeg',
+                description: 'Este desenho animado da Disney mostra as aventuras de um leão jovem de nome Simba, o herdeiro de seu pai, Mufasa. O tio malvado de Simba, Oscar, planeja roubar o trono de Mufasa atraindo pai e filho para uma emboscada. Simba consegue escapar e somente Mufasa morre. Com a ajuda de seus amigos,Timon e Pumba, ele reaparece como adulto para recuperar sua terra, que foi roubada por seu tio Oscar.',
                 rating: 4,
                 year: 1994
 };
 
 const film2 = {name: 'ENROLADOS',
-                imgSrc: './assets/enrolados-poster-6.jpg',
-                description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias vitae voluptas ab sapiente adipisci pariatur nulla ipsum dolor voluptatum, tempore deserunt ducimus itaque architecto, animi natus incidunt harum repellendus reiciendis! Impedit nam quisquam tenetur deserunt veniam, qui, ipsam explicabo assumenda ut voluptatum cum sed earum et sit quis provident sunt voluptas quos?',
+                imgSrc: './assets/static2.jpg',
+                description: 'O bandido mais procurado do reino, Flynn Rider, se esconde em uma torre e acaba prisioneiro de Rapunzel, residente de longa data do local. Dona de cabelos dourados e mágicos com 21 metros de comprimento, ela está trancada há anos e deseja desesperadamente a liberdade. A adolescente determinada faz um acordo com o rapaz, e, juntos, partem para uma aventura emocionante.',
                 rating: 5,
                 year: 2014
 };
 
 const film3 = {name: 'TOY STORY',
-                imgSrc: './assets/static3.png',
-                description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias vitae voluptas ab sapiente adipisci pariatur nulla ipsum dolor voluptatum, tempore deserunt ducimus itaque architecto, animi natus incidunt harum repellendus reiciendis! Impedit nam quisquam tenetur deserunt veniam, qui, ipsam explicabo assumenda ut voluptatum cum sed earum et sit quis provident sunt voluptas quos?',
+                imgSrc: './assets/static3.webp',
+                description: 'O aniversário do garoto Andy está chegando e seus brinquedos ficam nervosos, temendo que ele ganhe novos brinquedos que possam substituí-los. Liderados pelo caubói Woody, o brinquedo predileto de Andy, eles recebem Buzz Lightyear, o boneco de um patrulheiro espacial, que logo passa a receber mais atenção do garoto.',
                 rating: 5,
                 year: 2004
 };
 
 const film4 = {name: 'NO WAY HOME',
-                imgSrc: './assets/no-way-home.jpg',
+                imgSrc: './assets/static4.jpg',
                 description: 'Peter Parker tem a sua identidade secreta revelada e pede ajuda ao Doutor Estranho. Quando um feitiço para reverter o evento não sai como o esperado, o Homem-Aranha e seu companheiro dos Vingadores precisam enfrentar inimigos de todo o multiverso.',
                 rating: 5,
                 year: 2021
 };
 
-var films = [];
+var films = [film1, film2, film3, film4];
 
-row_construct(0);
-film_construct(film1, 0);
-film_construct(film2, 0);
-film_construct(film3, 0);
-film_construct(film4, 0);
-input_construct(0);
+films_load(films);
+
+function films_load(films_list){
+
+    var catalog = document.getElementById('catalog');
+    catalog.innerHTML = '';
+    catalog.innerHTML = '<h1>CATÁLAGO</h1>';
+
+    var n_films = 0;
+    var flag = true;
+
+    for(var i = 0; flag; i++){
+
+        row_construct(i);
+
+        for(var j = 0; j < max_films_row; j++){
+
+            if(n_films === films_list.length){
+                input_construct(i);
+                flag = false;
+                break;
+            }
+
+            film_construct(films_list[n_films], i, n_films);
+            n_films++;
+        }
+    }
+}
 
 function row_construct(n_row){
 
@@ -61,17 +83,14 @@ function row_construct(n_row){
     catalog.appendChild(row);
 }
 
-function film_construct(film_data, n_row){
-
-    films.push(film_data);
-    var n_film = films.length;
-    console.log(films);
+function film_construct(film_data, n_row, n_film){
 
     //creating film space
     var row_films = document.getElementById('films-row' + n_row);
     var film = document.createElement('div');
     film.classList = 'film';
     var id_film = 'film' + n_film;
+    console.log(id_film);
     film.id = id_film;
     film.setAttribute('onclick', 'toggleDesc("desc-' + id_film + '")');
 
@@ -86,6 +105,7 @@ function film_construct(film_data, n_row){
     var desc = document.createElement('div');
     desc.classList = 'desc';
     var id_desc = 'desc-' + id_film;
+    console.log(id_desc);
     desc.id = id_desc;
     row_desc.appendChild(desc);
 
@@ -110,6 +130,12 @@ function film_construct(film_data, n_row){
     input_year.classList = 'desc-year';
     input_year.id = 'input-year' + id_film;
     input_year.innerHTML = film_data['year'];
+    var trash = document.createElement('img');
+    trash.classList = 'trash';
+    trash.setAttribute('onclick', 'film_pop(' + n_film +')');
+    trash.src = 'assets/trash.svg';
+    trash.style.width = '35px';
+    trash.style.height = '35px';
 
     var desc_down = document.createElement('div');
     desc_down.classList = 'desc-down';
@@ -122,6 +148,7 @@ function film_construct(film_data, n_row){
     add_desc.appendChild(desc_up);
     desc_up.appendChild(input_title);
     desc_up.appendChild(input_year);
+    desc_up.appendChild(trash);
     add_desc.appendChild(desc_down);
     desc.appendChild(add_desc);
 }
@@ -229,12 +256,11 @@ function add_img(){
     }
 }
 
-function input_destroy(){
+function film_pop(index){
 
-    var input_film = document.getElementById('film-input');
-    input_film.parentElement.removeChild(input_film);
-    var input_desc = document.getElementById('desc-input');
-    input_desc.parentElement.removeChild(input_desc);
+    films.splice(index, 1);
+
+    films_load(films);
 }
 
 function input_save(){
@@ -252,8 +278,6 @@ function input_save(){
         return null;
     }
 
-    var n_row = Math.floor(films.length / max_films_row);
-
     var film = {
         name: input_title,
         imgSrc: input_img,
@@ -264,26 +288,19 @@ function input_save(){
 
     console.log(film);
 
-    input_destroy();
+    films.push(film);
 
-    film_construct(film, n_row);
-
-    if((films.length % max_films_row) === 0){
-        n_row++;
-        row_construct(n_row);
-    }
-
-    input_construct(n_row);
+    films_load(films);
 }
 
 function toggleDesc(el){
-    var i = 1;
+    var i = 0;
 
     if(el != 'desc-input' && document.getElementById('desc-input').style.display == 'flex'){
         return null;
     }
 
-    while(i <= films.length){
+    while(i < films.length){
 
         var id_desc = 'desc-film' + i;
 

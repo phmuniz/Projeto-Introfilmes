@@ -167,8 +167,10 @@ body{
     display: flex;
     flex: 50%;
     text-align: left;
+    align-items: center;
     padding: 10px 0 5px 20px;
     gap: 10px;
+    position: relative;
 }
 
 .desc-down{
@@ -201,6 +203,20 @@ body{
     align-items: center;
 }
 
+.trash:hover{
+    background-color: #E0FFFF;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.trash{
+    position: absolute;
+    right: 20px;
+    transition: 0.1s;
+}
+
 .desc-text{
     font-size: 18px;
 }
@@ -222,6 +238,7 @@ body{
     position: absolute;
     top: 50px;
     right: 30px;
+    transition: 0.2s;
 }
 
 footer{
